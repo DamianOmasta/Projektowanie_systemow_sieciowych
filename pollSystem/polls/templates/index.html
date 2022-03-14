@@ -1,0 +1,45 @@
+<html>
+<body>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<center><b><font class="display-3" color = "brown" size="6">System tworzenia ankiet</font></b></center><br>
+<div id="page">
+<div class="text-center" id="header">
+<b><font  color = "brown" size="6">Ekran logowania</font></b><br>
+</div><br>
+<div id="container">
+<table width="300" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+<tr>
+<form method="post"> {% csrf_token %}
+    <td>
+        <table width="100%" border="0" cellpadding="3" cellspacing="1" >
+        <tr>
+            <td width="78">Login</td>
+            <td width="6">:</td>
+            <td width="294"><input name="myusername" class="form-control" type="text" id="myusername" placeholder="Wprowadź login" required></td>
+        </tr>
+        <tr>
+            <td>Haslo</td>
+            <td>:</td>
+            <td><input name="mypassword" class="form-control" type="password" id="mypassword" placeholder="Wprowadź hasło" required></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td><button type="submit" class="btn btn-success" >Zaloguj</button></td>
+        </tr>
+        </table>
+    </td>
+</form>
+</tr>
+</table>
+<center>
+<br>Jeszcze nie zarejestrowany? <a href="/registeracc/"><b>Stworz konto tutaj</b></a>
+</center>
+</div>
+<div id="footer">
+<div class="bottom_addr"></div>
+</div>
+</div>
+</body></html>

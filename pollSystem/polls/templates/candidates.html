@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} System tworzenia ankiet {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<div class="container mt-4">
+      <center><label for="exampleInputEmail1">Wybierz pozycję</label></center>
+    <form method="post" > {% csrf_token %}
+        <center><select name="poz"></center>
+            <option value="">---------</option>
+            {% for p in pos %}
+                <option value="{{ p.position_name }}" >{{ p.position_name }}</option>
+            {% endfor %}
+        </select>
+      <table align="center"><tr><td>
+      <div class="form-group">
+        <br><center><label for="exampleInputEmail1">Wpisz kandydaturę</label></center>
+        <input class="form-control mt-2" name="coz" placeholder="Wprowadź nowe hasło" required>
+      </div>
+      <center><button type='submit' class="btn btn-primary" >Dodaj pozycję </button></center>
+    </form>
+    <br><table class="table table-hover" id="example">
+        <thead>
+            <tr>
+                <th>Numer.Index</th>
+                <th>Imie</th>
+                <th>Pozycja</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in cos %}
+            <tr>
+                <td>{{forloop.counter}}.</td>
+                <td>{{c.candidate_name}}</td>
+                <td>{{c.candidate_position}}</td>
+                <td>{{c.candidate_votes}}</td>
+                <td><button class="btn btn-danger" onclick="document.location='/candidatesDelete/{{c.candidate_name}}/'">Delete</button></td>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}
+

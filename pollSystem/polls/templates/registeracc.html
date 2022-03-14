@@ -1,0 +1,45 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
+<body bgcolor="tan">
+<center><b><font class="display-3" color = "brown" size="6">System tworzenia ankiet</font></b></center><br>
+<div id="page">
+<div id="header">
+<center><b><font color = "brown" size="6">Rejestracja konta</font></b><br></center>
+<div id="container">
+<center><h3>Zarejestruj konto, wypełniając wymagane informacje poniżej:</h3></center>
+<form method="post" > {% csrf_token %}
+  <table align="center"><tr><td>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Login</label>
+    <input type='text' class="form-control" name='login' maxlength='15' value=''required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Email</label>
+    <input type='text' class="form-control" name='email' maxlength='15' value=''required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Hasło</label>
+    <input type='password' class="form-control" name='password' maxlength='15' value=''required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Potwierdź hasło</label>
+    <input type='password' class="form-control" name='confirm_password' maxlength='15' value=''required>
+  </div>
+  <center><button type='submit' class="btn btn-primary" >Zarejestruj konto </button></center>
+</form>
+<div class="text-center">
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">(function(){window['__CF$cv$params']={r:'6d5aa54a1a83f2dc',m:'8GGywuWcAC4pU87T3sop_AkecegFuUsNon3TBhpFDns-1643545135-0-ARso2TlMoAATZq67DECPJu+Ie6ETNWHpapxiqkD49m9wH6e5SVrYCtxVGXE7L7JI9/ZKFS7bZ1X8evq/xIYS+YES/4qmoXwzXK9xc0KYuWsEU1d1Q1TYa8nKgTx6c+usQVn7Cd+ESUHmnW8TTvmWtuCsh0mfUSwzPqeyNPHF1vThK6bRYQhf9EgS/mQkivKx/8T0sQe5L2tZ70z9kG5GYMc=',s:[0x90993d5b05,0x42012585f3],}})();</script></body>
+</html>

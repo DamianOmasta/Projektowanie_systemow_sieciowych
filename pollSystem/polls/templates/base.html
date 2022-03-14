@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head><body bgcolor="tan">
+<title>{% block title %} {% endblock %}</title>
+{% block css %}
+{% endblock %}
+<center class="text-center"><b><font class="display-3" color = "brown" size="6">System tworzenia ankiet</font></b></center><br>
+<div id="page">
+<div class="text-center" id="header">
+| <button type="button" class="btn btn-primary" class="btn btn-primary" onclick="document.location='/results/'" >Wyniki ankiet</button>
+| <button type="button" class="btn btn-secondary" class="btn btn-secondary" onclick="document.location='/vote/'" >Głosowanie</button>
+{% if user.is_superuser %}| <button type="button" class="btn btn-success" onclick="document.location='/positions/'">Zarządzaj pozycjami</button> {% endif %}
+{% if user.is_superuser %}| <button type="button" class="btn btn-warning" onclick="document.location='/candidates/'">Zarządzaj kandydaturami</button> {% endif %}
+| <button type="button" class="btn btn-dark" onclick="document.location='/changepass/'">Zmień hasło</button>
+| <button type="button" class="btn btn-danger" onclick="document.location='/Logout/'">Wyloguj się {{user}}</button> |
+</div>
+<div id="container">
+<center><b><font class="lead" color = "brown" size="2">Kliknij dowlony powyższy link, aby wykonać wybraną operację</font></b></center>
+</div>
+</div>
+{% block body %}
+{% endblock %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+{% block js %}
+{% endblock %}
+</body></html>

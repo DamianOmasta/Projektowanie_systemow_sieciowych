@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} System tworzenia ankiet {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<div class="container mt-4">
+    <table class="table table-hover" id="example">
+        <thead>
+            <tr>
+                <th>Numer.Index</th>
+                <th>Imie</th>
+                <th>Pozycja</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in cos %}
+            <tr>
+                <td>{{forloop.counter}}.</td>
+                <td>{{c.candidate_name}}</td>
+                <td>{{c.candidate_position}}</td>
+                <td>{{c.candidate_votes}}</td>
+                <td><button class="btn btn-success" onclick="document.location='/makevote/{{c.candidate_name}} {{c.candidate_position}}/'">Zagłosuj</button></td>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}
+

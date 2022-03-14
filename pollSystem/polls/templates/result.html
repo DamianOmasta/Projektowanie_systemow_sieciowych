@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} System tworzenia ankiet {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<div class="container mt-4">
+
+    <form method="post" > {% csrf_token %}
+      <table align="center"><tr><td>
+      <div class="form-group">
+        <center><label for="exampleInputEmail1">Wyszukaj Kandydata</label></center>
+        <input class="form-control mt-2" name="ask" placeholder="Wprowadź nowe hasło" required>
+      </div>
+      <center><button type='submit' class="btn btn-primary" >Filtruj </button></center>
+    </form>
+    <br><table class="table table-hover" id="example">
+        <thead>
+            <tr>
+                <th>Numer.Index</th>
+                <th>Imie</th>
+                <th>Pozycja</th>
+                <th>Liczba Głosów</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in cos %}
+            <tr>
+                <td>{{forloop.counter}}.</td>
+                <td>{{c.candidate_name}}</td>
+                <td>{{c.candidate_position}}</td>
+                <center><td>{{c.candidate_votes}}</td></center>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if cos.has_other_pages %}
+  <ul class="pagination">
+    {% if cos.has_previous %}
+      <li><a href="?page={{ books.previous_page_number }}" class="btn btn-success">&laquo;</a></li>
+    {% else %}
+      <li class="disabled btn btn-success"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in cos.paginator.page_range %}
+      {% if cos.number == i %}
+        <li class="active btn btn-success"><span>{{ i }} <span class="sr-only"></span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}" class="btn btn-success">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if cos.has_next %}
+      <li><a href="?page={{ books.next_page_number }}" class="btn btn-success">&raquo;</a></li>
+    {% else %}
+      <li class="disabled btn btn-success"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+    </div>
+{% endblock %}
+

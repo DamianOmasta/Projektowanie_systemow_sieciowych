@@ -37,6 +37,12 @@
         {% endfor %}
       </ul>
     {% endif %}
+  <form action='.' method='POST' class="text-center mt-5">
+    {% csrf_token %}
+    {{ form.captcha }}
+    <input type="submit" />
+    <button class='js-captcha-refresh'></button>
+</form>
 </div>
 </div>
 </div>

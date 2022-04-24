@@ -8,6 +8,9 @@ from django.contrib.auth.models import Group
 from django.http import JsonResponse
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django import forms
+from captcha.fields import CaptchaField
+
 
 
 def results(request):
@@ -161,4 +164,15 @@ def makevote(request, mycos, mypos):
     vos = Votes.objects.create(voter_id=username, position=mypos)
     vos.save()
     return redirect("vote")
+
+
+def home(request):
+    if request.POST:
+        form = CaptchaForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect(request.path + "?ok")
+    else:
+        form = CaptchaForm()
+
+    return render(request, "home.html", {"form": form})
 # Create your views here.
